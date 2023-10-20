@@ -14,6 +14,7 @@
 
 import React from 'react';
 import { Button } from '@mui/material';
+import { Helmet } from 'react-helmet-async';
 import { styled } from '@mui/material/styles';
 
 const PostFrame1 = styled('div')({
@@ -194,6 +195,9 @@ const ButtonContained = styled(Button)({
 function PostFrame(props) {
   return (
     <PostFrame1 className={props.className}>
+      <Helmet>
+        <title>PostFrame</title>
+      </Helmet>
       <ImageFrame>
         <Image1 props={props}></Image1>
       </ImageFrame>
