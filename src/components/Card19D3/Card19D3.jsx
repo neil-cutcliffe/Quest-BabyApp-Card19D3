@@ -13,7 +13,6 @@
  **********************************************************************/
 
 import React from 'react';
-import { Helmet } from 'react-helmet-async';
 import { styled } from '@mui/material/styles';
 import PostFrame from 'src/components/PostFrame/PostFrame';
 
@@ -43,9 +42,6 @@ const PostFrame1 = styled(PostFrame)(({ theme }) => ({
 function Card19D3(props) {
   return (
     <TypeQuest className={props.className}>
-      <Helmet>
-        <title>Card19D3</title>
-      </Helmet>
       <PostFrame1 />
     </TypeQuest>
   );
