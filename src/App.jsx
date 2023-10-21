@@ -12,7 +12,7 @@ function App() {
       <StyledEngineProvider injectFirst>
         <ThemeProvider theme={questTheme}>
           <Routes>
-            <Route path="/" element={<Card19D3 />} />
+            <Route path="Card19D3" element={<Card19D3 />} />
             <Route path="PostFrame" element={<PostFrame />} />
           </Routes>
         </ThemeProvider>
