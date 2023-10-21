@@ -21,17 +21,17 @@ const TypeQuest = styled('div')(({ theme }) => ({
   backgroundColor: `rgba(250, 250, 250, 1)`,
   boxShadow: `0px 4px 8px rgba(0, 0, 0, 0.16)`,
   borderRadius: `8px`,
-  display: `flex`,
+  display: `grid`,
   position: `relative`,
   isolation: `isolate`,
-  flexDirection: `column`,
-  width: '100%',
-  justifyContent: `flex-start`,
-  alignItems: `flex-start`,
+  height: `auto`,
+  width: `100%`,
   padding: `0px`,
   boxSizing: `border-box`,
   overflow: `hidden`,
-  height: 'auto',
+  gridTemplateColumns: `repeat(auto-fit, minmax(390px, 1fr))`,
+  columnGap: `10px`,
+  rowGap: `10px`,
 }));
 
 const PostFrame1 = styled(PostFrame)(({ theme }) => ({
@@ -46,7 +46,10 @@ function Card19D3(props) {
       <Helmet>
         <title>Card19D3</title>
       </Helmet>
-      <PostFrame1 />
+      {props.posts &&
+        props.posts.map((mypost, index) => {
+          return <PostFrame1 key={index} post={props.posts[index]} />;
+        })}
     </TypeQuest>
   );
 }

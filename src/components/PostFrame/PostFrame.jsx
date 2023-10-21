@@ -16,6 +16,7 @@ import React from 'react';
 import { Button } from '@mui/material';
 import { Helmet } from 'react-helmet-async';
 import { styled } from '@mui/material/styles';
+import Image1Image from 'src/assets/images/PostFrame_Image.png';
 
 const PostFrame1 = styled('div')({
   backgroundColor: `rgba(255, 255, 255, 1)`,
@@ -49,9 +50,8 @@ const ImageFrame = styled('div')({
   top: `0px`,
 });
 
-const Image1 = styled('div', {
-  shouldForwardProp: (prop) => !['props'].includes(prop.toString()),
-})(({ props }) => ({
+const Image1 = styled('div')({
+  backgroundImage: `url(${Image1Image})`,
   backgroundPosition: `center`,
   backgroundSize: `cover`,
   backgroundRepeat: `no-repeat`,
@@ -65,8 +65,7 @@ const Image1 = styled('div', {
   alignSelf: `stretch`,
   height: `251px`,
   margin: `0px`,
-  backgroundImage: props.post.image,
-}));
+});
 
 const Content = styled('div')({
   borderRadius: `0px`,
@@ -199,19 +198,21 @@ function PostFrame(props) {
         <title>PostFrame</title>
       </Helmet>
       <ImageFrame>
-        <Image1 props={props}></Image1>
+        <Image1></Image1>
       </ImageFrame>
       <Content>
         <Details>
           <TitleTop>
-            <Title>{props.post.title}</Title>
+            <Title>{`Lorem Ipsum`}</Title>
             <Q3Dots>
               <Rectangle1></Rectangle1>
               <Rectangle2></Rectangle2>
               <Rectangle3></Rectangle3>
             </Q3Dots>
           </TitleTop>
-          <Details1>{props.post.content}</Details1>
+          <Details1>
+            {`Lorem ipsum test to be seen and not read for placement only. Lorem ipsum test to be seen.`}
+          </Details1>
           <ButtonContained variant="contained" size="large" color="primary">
             {' '}
             BOOK ME{' '}
