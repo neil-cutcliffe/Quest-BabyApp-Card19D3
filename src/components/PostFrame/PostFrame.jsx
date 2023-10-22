@@ -13,9 +13,11 @@
  **********************************************************************/
 
 import React from 'react';
-import { Button } from '@mui/material';
+import { Button, Dialog } from '@mui/material';
 import { Helmet } from 'react-helmet-async';
 import { styled } from '@mui/material/styles';
+import Form1 from 'src/components/Form1/Form1';
+import usePostFrame from 'src/components/PostFrame/usePostFrame';
 
 const PostFrame1 = styled('div')({
   backgroundColor: `rgba(255, 255, 255, 1)`,
@@ -192,7 +194,35 @@ const ButtonContained = styled(Button)({
   margin: `8px 0px 0px 0px`,
 });
 
+const ContactUsFrame = styled('div')({
+  backgroundColor: `rgba(255, 255, 255, 1)`,
+  borderRadius: `0px`,
+  display: `flex`,
+  position: `absolute`,
+  isolation: `isolate`,
+  flexDirection: `row`,
+  justifyContent: `flex-start`,
+  alignItems: `flex-start`,
+  padding: `0px`,
+  boxSizing: `border-box`,
+  width: `370px`,
+  height: `244px`,
+  left: `1410px`,
+  top: `-631px`,
+  overflow: `hidden`,
+});
+
+const Form11 = styled(Form1)(({ theme }) => ({
+  width: `390px`,
+  height: `531px`,
+  position: `absolute`,
+  left: `3px`,
+  top: `1143px`,
+}));
+
 function PostFrame(props) {
+  const { data, fns } = usePostFrame(props);
+
   return (
     <PostFrame1 className={props.className}>
       <Helmet>
@@ -212,12 +242,22 @@ function PostFrame(props) {
             </Q3Dots>
           </TitleTop>
           <Details1>{props.post.content}</Details1>
-          <ButtonContained variant="contained" size="large" color="primary">
+          <ButtonContained
+            variant="contained"
+            size="large"
+            color="primary"
+            onClick={fns.toggleDialog}
+          >
             {' '}
             BOOK ME{' '}
           </ButtonContained>
         </Details>
       </Content>
+      <Dialog open={data.isDialogOpen} onClose={fns.toggleDialog}>
+        <ContactUsFrame>
+          <Form11 open={data.isDialogOpen} onClose={fns.toggleDialog} />
+        </ContactUsFrame>
+      </Dialog>
     </PostFrame1>
   );
 }
