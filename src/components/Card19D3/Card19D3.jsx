@@ -13,9 +13,11 @@
  **********************************************************************/
 
 import React from 'react';
+import { Button } from '@mui/material';
 import { Helmet } from 'react-helmet-async';
 import { styled } from '@mui/material/styles';
-import PostFrame from 'src/components/PostFrame/PostFrame';
+import Image1Image from 'src/assets/images/Card19D3_Image.png';
+import useCard19D3 from 'src/components/Card19D3/useCard19D3';
 
 const TypeQuest = styled('div')(({ theme }) => ({
   backgroundColor: `rgba(250, 250, 250, 1)`,
@@ -24,8 +26,8 @@ const TypeQuest = styled('div')(({ theme }) => ({
   display: `grid`,
   position: `relative`,
   isolation: `isolate`,
-  height: `auto`,
   width: `100%`,
+  height: `auto`,
   padding: `0px`,
   boxSizing: `border-box`,
   overflow: `hidden`,
@@ -34,13 +36,183 @@ const TypeQuest = styled('div')(({ theme }) => ({
   rowGap: `10px`,
 }));
 
-const PostFrame1 = styled(PostFrame)(({ theme }) => ({
-  height: `478px`,
+const PostFrame = styled('div')({
+  backgroundColor: `rgba(255, 255, 255, 1)`,
+  borderRadius: `0px`,
+  display: `flex`,
+  position: `relative`,
+  isolation: `isolate`,
+  flexDirection: `row`,
+  justifyContent: `flex-start`,
+  alignItems: `flex-start`,
+  padding: `0px`,
+  boxSizing: `border-box`,
   width: `390px`,
+  height: `478px`,
+  margin: `0px`,
+  overflow: `hidden`,
+});
+
+const ImageFrame = styled('div')({
+  borderRadius: `0px`,
+  display: `flex`,
+  position: `absolute`,
+  isolation: `isolate`,
+  flexDirection: `column`,
+  justifyContent: `flex-start`,
+  alignItems: `flex-start`,
+  padding: `10px`,
+  boxSizing: `border-box`,
+  alignSelf: `stretch`,
+  width: `390px`,
+  left: `0px`,
+  top: `0px`,
+});
+
+const Image1 = styled('div')({
+  backgroundImage: `url(${Image1Image})`,
+  backgroundPosition: `center`,
+  backgroundSize: `cover`,
+  backgroundRepeat: `no-repeat`,
+  borderRadius: `6px`,
+  display: `flex`,
+  position: `relative`,
+  isolation: `isolate`,
+  flexDirection: `row`,
+  justifyContent: `flex-start`,
+  alignItems: `flex-start`,
+  alignSelf: `stretch`,
+  height: `251px`,
+  margin: `0px`,
+});
+
+const Content = styled('div')({
+  borderRadius: `0px`,
+  display: `flex`,
+  position: `absolute`,
+  isolation: `isolate`,
+  flexDirection: `column`,
+  justifyContent: `flex-start`,
+  alignItems: `flex-start`,
+  padding: `10px 20px 35px 20px`,
+  boxSizing: `border-box`,
+  alignSelf: `stretch`,
+  width: `390px`,
+  left: `0px`,
+  top: `271px`,
+});
+
+const Details = styled('div')({
+  borderRadius: `0px`,
+  display: `flex`,
+  position: `relative`,
+  isolation: `isolate`,
+  flexDirection: `column`,
+  justifyContent: `flex-start`,
+  alignItems: `flex-start`,
+  padding: `0px`,
+  boxSizing: `border-box`,
+  alignSelf: `stretch`,
+  margin: `0px`,
+});
+
+const TitleTop = styled('div')({
+  borderRadius: `0px`,
+  display: `flex`,
+  position: `relative`,
+  isolation: `isolate`,
+  flexDirection: `row`,
+  justifyContent: `space-between`,
+  alignItems: `center`,
+  padding: `0px`,
+  boxSizing: `border-box`,
+  alignSelf: `stretch`,
+  margin: `0px`,
+});
+
+const Title = styled('div')(({ theme }) => ({
+  textAlign: `left`,
+  whiteSpace: `pre-wrap`,
+  fontSynthesis: `none`,
+  color: theme.palette['Text']['Primary'],
+  fontStyle: `normal`,
+  fontFamily: `Heebo`,
+  fontWeight: `700`,
+  fontSize: `38px`,
+  letterSpacing: `0px`,
+  textDecoration: `underline`,
+  textTransform: `none`,
   margin: `0px`,
 }));
 
+const Q3Dots = styled('div')({
+  display: `flex`,
+  position: `relative`,
+  isolation: `isolate`,
+  flexDirection: `row`,
+  justifyContent: `flex-start`,
+  alignItems: `flex-start`,
+  padding: `0px`,
+  boxSizing: `border-box`,
+  width: `4px`,
+  height: `20px`,
+  margin: `0px`,
+});
+
+const Rectangle1 = styled('div')(({ theme }) => ({
+  backgroundColor: theme.palette['Text']['Primary'],
+  borderRadius: `10px`,
+  width: `4px`,
+  height: `4px`,
+  position: `absolute`,
+  left: `0px`,
+  top: `0px`,
+}));
+
+const Rectangle2 = styled('div')(({ theme }) => ({
+  backgroundColor: theme.palette['Text']['Primary'],
+  borderRadius: `10px`,
+  width: `4px`,
+  height: `4px`,
+  position: `absolute`,
+  left: `0px`,
+  top: `8px`,
+}));
+
+const Rectangle3 = styled('div')(({ theme }) => ({
+  backgroundColor: theme.palette['Text']['Primary'],
+  borderRadius: `10px`,
+  width: `4px`,
+  height: `4px`,
+  position: `absolute`,
+  left: `0px`,
+  top: `16px`,
+}));
+
+const Details1 = styled('div')(({ theme }) => ({
+  textAlign: `left`,
+  whiteSpace: `pre-wrap`,
+  fontSynthesis: `none`,
+  color: theme.palette['Text']['Primary'],
+  fontStyle: `normal`,
+  fontFamily: `Heebo`,
+  fontWeight: `400`,
+  fontSize: `16px`,
+  letterSpacing: `0.15000000596046448px`,
+  textDecoration: `none`,
+  lineHeight: `150%`,
+  textTransform: `none`,
+  alignSelf: `stretch`,
+  margin: `8px 0px 0px 0px`,
+}));
+
+const ButtonContained = styled(Button)({
+  margin: `8px 0px 0px 0px`,
+});
+
 function Card19D3(props) {
+  const { data, fns } = useCard19D3(props);
+
   return (
     <TypeQuest className={props.className}>
       <Helmet>
@@ -48,7 +220,37 @@ function Card19D3(props) {
       </Helmet>
       {props.posts &&
         props.posts.map((mypost, index) => {
-          return <PostFrame1 key={index} post={props.posts[index]} />;
+          return (
+            <PostFrame key={index}>
+              <ImageFrame>
+                <Image1></Image1>
+              </ImageFrame>
+              <Content>
+                <Details>
+                  <TitleTop>
+                    <Title>{`Lorem Ipsum`}</Title>
+                    <Q3Dots>
+                      <Rectangle1></Rectangle1>
+                      <Rectangle2></Rectangle2>
+                      <Rectangle3></Rectangle3>
+                    </Q3Dots>
+                  </TitleTop>
+                  <Details1>
+                    {`Lorem ipsum test to be seen and not read for placement only. Lorem ipsum test to be seen.`}
+                  </Details1>
+                  <ButtonContained
+                    variant="contained"
+                    size="large"
+                    color="primary"
+                    onClick={fns.toggleDialog}
+                  >
+                    {' '}
+                    BOOK ME{' '}
+                  </ButtonContained>
+                </Details>
+              </Content>
+            </PostFrame>
+          );
         })}
     </TypeQuest>
   );
