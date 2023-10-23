@@ -136,56 +136,58 @@ const ButtonContained = styled(Button)({
 
 function Form1(props) {
   return (
-    <Property1Quest className={props.className}>
-      <ContactUs>{`Contact Us`}</ContactUs>
-      <Frame3>
-        <Row1>
-          <TextFieldStandard
-            variant="standard"
-            size="small"
-            label={`Full Name`}
-            helperText="Helper text"
-          />
-          <TextFieldStandard1
-            variant="standard"
-            size="small"
-            label={`Phone`}
-            helperText="Helper text"
-          />
-        </Row1>
-        <Row2>
-          <TextFieldStandard2
-            variant="standard"
-            size="small"
-            label={`Company`}
-            helperText="Helper text"
-          />
-          <TextFieldStandard3
-            variant="standard"
-            size="small"
-            label={`Email`}
-            helperText="Helper text"
-          />
-        </Row2>
-      </Frame3>
-      <TextFieldStandard4
-        variant="standard"
-        size="small"
-        label={`Comments`}
-        helperText="Helper text"
-      />
-      <Btm>
-        <ButtonContained
-          variant="contained"
-          size="large"
-          color="primary"
-          onClick={props.onClose}
-        >
-          {' '}
-          Submit{' '}
-        </ButtonContained>
-      </Btm>
-    </Property1Quest>
+    props.open && (
+      <Property1Quest className={props.className}>
+        <ContactUs>{`Contact Us`}</ContactUs>
+        <Frame3>
+          <Row1>
+            <TextFieldStandard
+              variant="standard"
+              size="small"
+              label={`Full Name`}
+              helperText="Helper text"
+            />
+            <TextFieldStandard1
+              variant="standard"
+              size="small"
+              label={`Phone`}
+              helperText="Helper text"
+            />
+          </Row1>
+          <Row2>
+            <TextFieldStandard2
+              variant="standard"
+              size="small"
+              label={`Company`}
+              helperText="Helper text"
+            />
+            <TextFieldStandard3
+              variant="standard"
+              size="small"
+              label={`Email`}
+              helperText="Helper text"
+            />
+          </Row2>
+        </Frame3>
+        <TextFieldStandard4
+          variant="standard"
+          size="small"
+          label={`Comments`}
+          helperText="Helper text"
+        />
+        <Btm>
+          <ButtonContained
+            variant="contained"
+            size="large"
+            color="primary"
+            onClick={props.onClose}
+          >
+            {' '}
+            Submit{' '}
+          </ButtonContained>
+        </Btm>
+      </Property1Quest>
+    )
   );
 }
 
